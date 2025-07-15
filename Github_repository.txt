@@ -1,0 +1,2 @@
+ssh : git@github.com:rbancal-diginamic/20250715-Python_Imperatif_TP.git
+https: https://github.com/rbancal-diginamic/20250715-Python_Imperatif_TP.git
