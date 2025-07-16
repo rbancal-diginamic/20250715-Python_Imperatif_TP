@@ -3,14 +3,15 @@ import os
 import json
 from pprint import pprint
 
-
 os.chdir("./Annexes/fake_quotes")
 files = [file for file in os.listdir() if os.path.isfile(file)]
 # print(files)
 author_sets = {}
 
+
 def clean_and_split_quote(quote, convertype):
     return convertype(quote.replace(',', '').replace('.', '').replace('?', '').strip().split())
+
 
 def create_sets_and_return_unique_set(files):
     # Cette variable créée un set global à tous les auteurs.
@@ -31,6 +32,7 @@ def create_sets_and_return_unique_set(files):
     # pprint(global_authors_set)
     return set.intersection(*global_authors_set)
 
+
 def count_the_desc_by_author(word_to_count: str):
     count_for_author = {}
     for author, words in author_sets.items():
@@ -39,19 +41,18 @@ def count_the_desc_by_author(word_to_count: str):
 
     return dict(sorted(count_for_author.items(), key=lambda x: x[1], reverse=True))
 
+
 def write_in_csv(csv_file, data_dictionnary):
-    os.remove(csv_file)
-    file_exists = os.path.exists(csv_file)
-    write_header = not file_exists or os.stat(csv_file).st_size == 0
+    if os.path.exists(csv_file):
+        os.remove(csv_file)
 
     with open(csv_file, mode='a', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
-
-        if write_header:
-            writer.writerow(["Auteur", "Nombre d'occurences du mote 'the'"])
+        writer.writerow(["Auteur", "Nombre d'occurences du mote 'the'"])
 
         for author, count in data_dictionnary.items():
             writer.writerow([author, count])
+
 
 unique_set = create_sets_and_return_unique_set(files)
 print(unique_set)
