@@ -94,4 +94,5 @@ Le pourcentage de survie pour la première classe est de {survived_passengers[2]
 # Exceution de la troisième fonction
 passengers_saved_by_boat = most_passengers_saved_by_boat(reader)
 print(
-    f"Le bateau de sauvetage ayant sauvé le plus de passagers est le bateau {passengers_saved_by_boat[0][0]} avec {passengers_saved_by_boat[0][1]} passagers sauvés.")
+    f"""Le bateau de sauvetage ayant sauvé le plus de passagers est le bateau {passengers_saved_by_boat[0][0]} 
+    avec {passengers_saved_by_boat[0][1]} passagers sauvés.""")
